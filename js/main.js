@@ -6,10 +6,15 @@
 function searchAllData(objIdKey) {
   for (i = 0; i < allData.length; i++) {
     if (allData[i].id == objIdKey) {
-      return allData[i]
+      let info = {num: i, searchData: allData[i]}
+      return info
     }
   }
 }
+
+
+
+
 function dOfW2kanji(dOfW) {
   if (dOfW == 'mon') {
     return '月';
@@ -41,36 +46,57 @@ $('#addPlan_mon').on('click', function() {
   const dOfW = '月';
   addPlan_dOfW = 'mon';
   $('#mkPlan_dOfW').text(dOfW);
+  $("#mkPlan_time").val('');
+  $('#mkPlan_title').val('');
+  $('#mkPlan_textarea').val('');
 });
 $('#addPlan_tue').on('click', function() {
   const dOfW = '火';
   addPlan_dOfW = 'tue';
   $('#mkPlan_dOfW').text(dOfW);
+  $("#mkPlan_time").val('');
+  $('#mkPlan_title').val('');
+  $('#mkPlan_textarea').val('');
 });
 $('#addPlan_wed').on('click', function() {
   const dOfW = '水';
   addPlan_dOfW = 'wed';
   $('#mkPlan_dOfW').text(dOfW);
+  $("#mkPlan_time").val('');
+  $('#mkPlan_title').val('');
+  $('#mkPlan_textarea').val('');
 });
 $('#addPlan_thu').on('click', function() {
   const dOfW = '木';
   addPlan_dOfW = 'thu';
   $('#mkPlan_dOfW').text(dOfW);
+  $("#mkPlan_time").val('');
+  $('#mkPlan_title').val('');
+  $('#mkPlan_textarea').val('');
 });
 $('#addPlan_fri').on('click', function() {
   const dOfW = '金';
   addPlan_dOfW = 'fri';
   $('#mkPlan_dOfW').text(dOfW);
+  $("#mkPlan_time").val('');
+  $('#mkPlan_title').val('');
+  $('#mkPlan_textarea').val('');
 });
 $('#addPlan_sat').on('click', function() {
   const dOfW = '土';
   addPlan_dOfW = 'sat';
   $('#mkPlan_dOfW').text(dOfW);
+  $("#mkPlan_time").val('');
+  $('#mkPlan_title').val('');
+  $('#mkPlan_textarea').val('');
 });
 $('#addPlan_sun').on('click', function() {
   const dOfW = '日';
   addPlan_dOfW = 'sun';
   $('#mkPlan_dOfW').text(dOfW);
+  $("#mkPlan_time").val('');
+  $('#mkPlan_title').val('');
+  $('#mkPlan_textarea').val('');
 });
 
 
@@ -115,6 +141,16 @@ $('div').on('click', '.deleteBtn', function() {
   console.log($(this).val());
   planId = $(this).val();
   $(`#${planId}`).remove();
+
+  // ローカルストレージから削除
+  let dataNum = searchAllData(planId);
+  dataNum = dataNum.num;
+  allData.splice( dataNum, 1 );
+  //allDataををJSON形式に変換し上書きする。
+  allJson = JSON.stringify(allData);
+  //ローカルストレージにweeklyScheduleAppというキーでテキストを保存する。
+  localStorage.setItem('weeklyScheduleApp',allJson);
+  console.log(allJson);
 })
 
 // =======================データ初期値表示============================
@@ -140,20 +176,30 @@ if (localStorage.getItem('weeklyScheduleApp')) {
 // ===================テキスト表示（仮）===================
 let select = '';
 $('div').on('click', '.plan', function() {
+  // if ($('div').on('click', '.deleteBtn') == false) {
+  //   console.log("削除ボタンは押されていない");
+  // }
   console.log(`#${select.id}`)
   if (select != '') {
     $(`#${select.id}`).css('background-color','whitesmoke');
   }
   $(this).css('background-color','#FFCB72');
 
-  const data = searchAllData($(this).attr('id'));
-  select = data;
-  $('#displayText').text(data.text)
-  // ===================編集===================
-  $('#mkPlan_dOfW').text(dOfW2kanji(data.dOfW));
-  $("#mkPlan_time").val(data.time);
-  $('#mkPlan_title').val(data.title);
-  $('#mkPlan_textarea').val(data.text);
+  if (searchAllData($(this).attr('id'))) {
+    let data = searchAllData($(this).attr('id'));
+    data = data.searchData;
+    select = data;
+    $('#displayText').text(data.text)
+    // ===================編集===================
+    // フォームに表示
+    $('#mkPlan_dOfW').text(dOfW2kanji(data.dOfW));
+    $("#mkPlan_time").val(data.time);
+    $('#mkPlan_title').val(data.title);
+    $('#mkPlan_textarea').val(data.text);
+    // 保存用変数に入れる
+    // addPlan_dOfW = dOfW2kanji(data.dOfW);
+    // addPlan_time = data.time;
+  }
 
 
 })
