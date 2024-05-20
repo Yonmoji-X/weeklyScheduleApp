@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>M2
+  </title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>M2</h1>
+  </header>
+
+  <main>
+    <div class="contentsWrapper">
+
+
+
+      <div class="container">
+        <div class="article_dOfW" id="monday">
+          <h3>月</h3>
+          <section>
+              <button class="addBtn" id="addPlan_mon">＋</button>
+              <button id="slot">編集</button>
+          </section>
+          <section class="plan" id="mon_9">
+              <div>9:00</div>
+              <div>課題</div>
+          </section>
+        </div>
+
+        <div class="article_dOfW" id="tuesday">
+          <h3>火</h3>
+          <section>
+              <button class="addBtn" id="addPlan_tue">＋</button>
+              <button id="deletePlan">編集</button>
+          </section>
+          <section class="plan" id="tue_9">
+              <div>9:00</div>
+              <div>課題</div>
+          </section>
+        </div>
+
+        <div class="article_dOfW" id="wednesday">
+          <h3>水</h3>
+          <section>
+              <button class="addBtn" id="addPlan_wed">＋</button>
+              <button id="deletePlan">編集</button>
+          </section>
+          <section class="plan" id="wed_9">
+              <div>9:00</div>
+              <div>課題</div>
+          </section>
+        </div>
+
+        <div class="article_dOfW" id="thursday">
+          <h3>木</h3>
+          <section>
+              <button class="addBtn" id="addPlan_thu">＋</button>
+              <button id="deletePlan">編集</button>
+          </section>
+          <section class="plan" id="thu_9">
+              <div>9:00</div>
+              <div>課題</div>
+          </section>
+        </div>
+
+        <div class="article_dOfW" id="friday">
+          <h3>金</h3>
+          <section>
+              <button class="addBtn" id="addPlan_fri">＋</button>
+              <button id="deletePlan">編集</button>
+          </section>
+          <section class="plan" id="fri_9">
+              <div>9:00</div>
+              <div>課題</div>
+          </section>
+        </div>
+
+        <div class="article_dOfW" id="saturday">
+          <h3>土</h3>
+          <section>
+              <button class="addBtn"  id="addPlan_sat">＋</button>
+              <button id="deletePlan">編集</button>
+          </section>
+          <section class="plan" id="sat_9">
+              <div>9:00</div>
+              <div>課題</div>
+          </section>
+        </div>
+
+        <div class="article_dOfW" id="sunday">
+          <h3>日</h3>
+          <section>
+              <button class="addBtn" id="addPlan_sun">＋</button>
+              <button id="deletePlan">編集</button>
+          </section>
+          <section class="plan" id="sun_9">
+              <div>9:00</div>
+              <div>課題</div>
+          </section>
+        </div>
+
+      </div>
+      <!-- ==============入力フォーム============== -->
+      <div class="aside" id="mkPlan">
+        <div id="mkPlan_dOfW">曜日</div>
+        <select id="mkPlan_time">
+          <option value="1:00">1:00</option>
+          <option value="2:00">2:00</option>
+          <option value="3:00">3:00</option>
+          <option value="4:00">4:00</option>
+          <option value="5:00">5:00</option>
+          <option value="6:00">6:00</option>
+          <option value="7:00">7:00</option>
+          <option value="8:00">8:00</option>
+          <option value="9:00">9:00</option>
+          <option value="0:00">10:00</option>
+          <option value="11:00">11:00</option>
+          <option value="12:00">12:00</option>
+          <option value="13:00">13:00</option>
+          <option value="14:00">14:00</option>
+          <option value="15:00">15:00</option>
+          <option value="16:00">16:00</option>
+          <option value="17:00">17:00</option>
+          <option value="18:00">18:00</option>
+          <option value="19:00">19:00</option>
+          <option value="20:00">20:00</option>
+          <option value="21:00">21:00</option>
+          <option value="22:00">22:00</option>
+          <option value="23:00">23:00</option>
+          <option value="24:00">24:00</option>
+        </select>
+
+        <input type="text" id="mkPlan_title">
+        <textarea id="mkPlan_textarea"></textarea>
+        <ul>
+          <li id="save">保存</li>
+          <li id="clear">キャンセル</li>
+        </ul>
+      </div>
+      <!-- ====================================== -->
+
+    </div>
+
+
+    <!-- <input type="text" id="input">
+    <textarea id="text_area"></textarea>
+    <ul>
+      <li id="save">Save</li>
+      <li id="clear">Clear</li>
+    </ul> -->
+  </main>
+
+  <footer>
+    <small>G's</small>
+  </footer>
+
+  <script src="./js/main.js"></script>
+
+</body>
+
+</html>

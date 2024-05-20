@@ -1,0 +1,62 @@
+.contentsWrapper{
+  background-color: whitesmoke;
+  display: flex;
+}
+
+.aside{
+  background-color: white;
+  margin: 2px 2px 2px 2px;
+  display: flex;
+  flex-direction: column;
+}
+
+.container{
+  display: flex;
+  margin: 2px 2px 2px 2px;
+}
+
+.article_dOfW{
+  background-color: aquamarine;
+  width:120px;
+  margin: 2px 2px 2px 2px;
+}
+
+.plan{
+  background-color: whitesmoke;
+  margin: 2px 2px 2px 2px;
+}
+
+
+/* ボタン関係 */
+
+.aside ul{
+  padding: 0;
+  border-top: 1px solid #000000;
+  display:table;  /* 定義 */
+  table-layout: fixed;
+  width:100%;
+}
+.aside li{
+  text-align: center;
+  list-style-type:none;
+  border: 1px solid #666;
+  background-color: #FFF;
+  display:table-cell;  /* 定義 */
+  cursor: pointer;
+}
+.aside li:hover{
+  background: #0066CC;
+  color:#fff;
+}
+.aside input,textarea{
+  margin: 3%;
+  width: 95%;
+  font-size:80%;
+  box-shadow: 3px 3px 3px 3px #555;
+}
+.aside input{
+  height: 30px;
+}
+.aside textarea{
+  height: 230px;
+}
