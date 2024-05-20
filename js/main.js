@@ -3,6 +3,11 @@
 // addBtn
 
 // 関数類
+/**
+ * allDataからid検索
+ * 検索idの番号、検索idのデータオブジェクト
+ * @return {object} {num: 番号, searchData: データオブジェクト}
+ */
 function searchAllData(objIdKey) {
   for (i = 0; i < allData.length; i++) {
     if (allData[i].id == objIdKey) {
@@ -13,7 +18,10 @@ function searchAllData(objIdKey) {
 }
 
 
-
+/**
+ *曜日の引数を漢字にして返す。
+ * @return {string} dOfWはmon,tue,wed...など曜日の引数を漢字にして返す
+ */
 
 function dOfW2kanji(dOfW) {
   if (dOfW == 'mon') {
@@ -38,6 +46,7 @@ let allData = [];
 let allJson = '';
 let addPlan_dOfW = '';
 let addPlan_time = '';
+let addPlanId = '';
 let planId = '';
 
 // =======================[＋]ボタン=======================
@@ -109,29 +118,57 @@ $('#save').on('click', function() {
     addPlan_title = $('#mkPlan_title').val();
     console.log(addPlan_time);
     console.log(addPlan_title);
+    console.log(addPlan_dOfW);
 
     // 曜日のarticleを拾ってきてプランの内容をappendChild
     const childContent = `<section class="plan" id="${addPlan_dOfW}_${addPlan_time}"><div>${addPlan_time}:00</div><div>${addPlan_title}</div><button class="deleteBtn" value="${addPlan_dOfW}_${addPlan_time}" id="btn_${addPlan_dOfW}_${addPlan_time}">削除</button></section>`
     // このidは「+」から取得する必要がある
+
+  /*
+  保存と編集
+  保存：もし同じ曜日、同じ時間のデータなければ
+  ・appendChild
+  ・データpush
+
+  編集：もし同じ曜日、同じ時間のデータあれば
+  ・removeChild
+  ・データ書き換え
+  ・appendChild
+
+  */
+    if (searchAllData(`${addPlan_dOfW}_${addPlan_time}`)) {
+      $(`#${addPlan_dOfW}_${addPlan_time}`).remove();
+      let data = searchAllData(`${addPlan_dOfW}_${addPlan_time}`).searchData;
+      data.title = addPlan_title;
+      data.text = $('#mkPlan_textarea').val();
+      console.log(data)
+       //allDataををJSON形式に変換し上書きする。
+      allJson = JSON.stringify(allData);
+       //ローカルストレージにweeklyScheduleAppというキーでテキストを保存する。
+      localStorage.setItem('weeklyScheduleApp',allJson);
+      console.log(allJson);
+    } else {
+      // $(`#${addPlan_dOfW}`).append(childContent);
+      // データに入れる-------------------------------
+            //タイトルとテキストエリアの文字列を保存
+            const data = {
+              id: `${addPlan_dOfW}_${addPlan_time}`,
+              dOfW: addPlan_dOfW,
+              title: addPlan_title,
+              time: addPlan_time,
+              text: $('#mkPlan_textarea').val(),
+              // child: childContent,//html型ごと入れるとデータ食うのでデータ読み込んで再編成する
+            }
+            console.log(data);
+            // allData配列にプッシュ
+            allData.push(data);
+            //allDataををJSON形式に変換し上書きする。
+            allJson = JSON.stringify(allData);
+            //ローカルストレージにweeklyScheduleAppというキーでテキストを保存する。
+            localStorage.setItem('weeklyScheduleApp',allJson);
+            console.log(allJson);
+    }
     $(`#${addPlan_dOfW}`).append(childContent);
-    // データに入れる-------------------------------
-          //タイトルとテキストエリアの文字列を保存
-          const data = {
-            id: `${addPlan_dOfW}_${addPlan_time}`,
-            dOfW: addPlan_dOfW,
-            title: addPlan_title,
-            time: addPlan_time,
-            text: $('#mkPlan_textarea').val(),
-            // child: childContent,//html型ごと入れるとデータ食うのでデータ読み込んで再編成する
-          }
-          console.log(data);
-          // allData配列にプッシュ
-          allData.push(data);
-          //allDataををJSON形式に変換し上書きする。
-          allJson = JSON.stringify(allData);
-          //ローカルストレージにweeklyScheduleAppというキーでテキストを保存する。
-          localStorage.setItem('weeklyScheduleApp',allJson);
-          console.log(allJson);
   }
 });
 
@@ -196,9 +233,8 @@ $('div').on('click', '.plan', function() {
     $("#mkPlan_time").val(data.time);
     $('#mkPlan_title').val(data.title);
     $('#mkPlan_textarea').val(data.text);
-    // 保存用変数に入れる
-    // addPlan_dOfW = dOfW2kanji(data.dOfW);
-    // addPlan_time = data.time;
+    // 保存用変数に曜日を入れる
+    addPlan_dOfW = data.dOfW;
   }
 
 
@@ -211,66 +247,19 @@ $('div').on('click', '.plan', function() {
 
 // ===================ローカルストレージのデータ削除=====================
 $('#removeLs').on('click', function() {
-  localStorage.removeItem('weeklyScheduleApp');
+  if(window.confirm('今週の予定を全て削除します')){
+    //allDataををJSON形式に変換し上書きする。
+    allJson = '';
+    //ローカルストレージにweeklyScheduleAppというキーでテキストを保存する。
+    localStorage.setItem('weeklyScheduleApp',allJson);
+    location.reload();
+	} else {
+		window.alert('キャンセルされました'); // 警告ダイアログを表示
+	}
 })
 
 
 
 
 
-/*
-          <section class="plan" id="${addPlan_dOfW}_${addPlan_time}">
-              <div>${addPlan_time}</div>
-              <div>${addPlan_title}</div>
-          </section>
 
-          <section class="plan" id="sun_9">
-              <div>9:00</div>
-              <div>課題</div>
-          </section>
-*/
-
-
-
-// =====================================以下参考=====================================
-/*
-    //保存するときの処理
-    $('#save').on('click', function() {
-      //タイトルとテキストエリアの文字列を保存
-      const data = {
-        title: $('#input').val(),
-        text: $('#text_area').val(),
-      }
-      console.log(data);
-      //オブジェクトをJSON形式に変換する。
-      const json = JSON.stringify(data);
-      console.log(json);
-      //ローカルストレージにmemo2というキーでテキストを保存する。
-      localStorage.setItem('memo2',json);
-
-    });
-
-    //削除するときの処理
-    $('#clear').on('click', function() {
-      //ローカルストレージからmome2というキーの値を削除する。
-      localStorage.removeItem('memo2');
-      //空文字列でテキストエリアを上書きする。
-      $('#input').val('');
-      $('#text_area').val('');
-    });
-
-    if (localStorage.getItem('memo')) {
-      //ローカルストレージからmemo2というキーの値を所得する。
-      const json = localStorage.getItem('memo2');
-      console.log(json);
-      const data = JSON.parse(json);
-      console.log(data);
-
-      //テキストエリアに取得した値を表示する。
-      $('#input').val(data.title);
-      $('#text_area').val(data.text);
-
-
-    }
-
-    */
