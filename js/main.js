@@ -4,42 +4,43 @@
 // 追加するプランの曜日情報
 let addPlan_dOfW = '';
 let addPlan_time = '';
+let planId = '';
 
 // =======================[＋]ボタン=======================
 // もっと綺麗な書き方できそう
 $('#addPlan_mon').on('click', function() {
   const dOfW = '月';
-  addPlan_dOfW = 'monday';
+  addPlan_dOfW = 'mon';
   $('#mkPlan_dOfW').text(dOfW);
 });
 $('#addPlan_tue').on('click', function() {
   const dOfW = '火';
-  addPlan_dOfW = 'tuesday';
+  addPlan_dOfW = 'tue';
   $('#mkPlan_dOfW').text(dOfW);
 });
 $('#addPlan_wed').on('click', function() {
   const dOfW = '水';
-  addPlan_dOfW = 'wednesday';
+  addPlan_dOfW = 'wed';
   $('#mkPlan_dOfW').text(dOfW);
 });
 $('#addPlan_thu').on('click', function() {
   const dOfW = '木';
-  addPlan_dOfW = 'thursday';
+  addPlan_dOfW = 'thu';
   $('#mkPlan_dOfW').text(dOfW);
 });
 $('#addPlan_fri').on('click', function() {
   const dOfW = '金';
-  addPlan_dOfW = 'friday';
+  addPlan_dOfW = 'fri';
   $('#mkPlan_dOfW').text(dOfW);
 });
 $('#addPlan_sat').on('click', function() {
   const dOfW = '土';
-  addPlan_dOfW = 'saturday';
+  addPlan_dOfW = 'sat';
   $('#mkPlan_dOfW').text(dOfW);
 });
 $('#addPlan_sun').on('click', function() {
   const dOfW = '日';
-  addPlan_dOfW = 'sunday';
+  addPlan_dOfW = 'sun';
   $('#mkPlan_dOfW').text(dOfW);
 });
 
@@ -52,11 +53,23 @@ $('#save').on('click', function() {
   console.log(addPlan_title);
 
   // 曜日のarticleを拾ってきてプランの内容をappendChild
-  const child = `<section class="plan" id="${addPlan_dOfW}_${addPlan_time}"><div>${addPlan_time}</div><div>${addPlan_title}</div></section>`
+  const child = `<section class="plan" id="${addPlan_dOfW}_${addPlan_time}"><div>${addPlan_time}:00</div><div>${addPlan_title}</div><button class="deleteBtn" value="${addPlan_dOfW}_${addPlan_time}" id="btn_${addPlan_dOfW}_${addPlan_time}">削除</button></section>`
   // このidは「+」から取得する必要がある
   $(`#${addPlan_dOfW}`).append(child);
-  // $('#monday').append(child);
 });
+
+// =======================削除ボタン============================
+
+$('div').on('click', '.deleteBtn', function() {
+  console.log($(this).val());
+  planId = $(this).val();
+  $(`#${planId}`).remove();
+})
+
+
+
+
+
 
 /*
           <section class="plan" id="${addPlan_dOfW}_${addPlan_time}">
