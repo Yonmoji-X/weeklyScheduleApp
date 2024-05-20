@@ -1,5 +1,6 @@
 // +ボタンについて
 // +ボタンを押すと、入力フォームのタイトルに曜日が入る。
+// addBtn
 
 // 関数類
 function searchAllData(objIdKey) {
@@ -7,6 +8,23 @@ function searchAllData(objIdKey) {
     if (allData[i].id == objIdKey) {
       return allData[i]
     }
+  }
+}
+function dOfW2kanji(dOfW) {
+  if (dOfW == 'mon') {
+    return '月';
+  } else if (dOfW == 'tue') {
+    return '火';
+  } else if (dOfW == 'wed') {
+    return '水';
+  } else if (dOfW == 'thu') {
+    return '木';
+  } else if (dOfW == 'fri') {
+    return '金';
+  } else if (dOfW == 'sat') {
+    return '土';
+  } else if (dOfW == 'sun') {
+    return '日';
   }
 }
 
@@ -126,14 +144,21 @@ $('div').on('click', '.plan', function() {
   if (select != '') {
     $(`#${select.id}`).css('background-color','whitesmoke');
   }
-  $(this).css('background-color','red');
+  $(this).css('background-color','#FFCB72');
 
   const data = searchAllData($(this).attr('id'));
   select = data;
-  if(data.text) {
-    $('#displayText').text(data.text)
-  }
+  $('#displayText').text(data.text)
+  // ===================編集===================
+  $('#mkPlan_dOfW').text(dOfW2kanji(data.dOfW));
+  $("#mkPlan_time").val(data.time);
+  $('#mkPlan_title').val(data.title);
+  $('#mkPlan_textarea').val(data.text);
+
+
 })
+
+
 
 
 
