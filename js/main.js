@@ -1,6 +1,15 @@
 // +ボタンについて
 // +ボタンを押すと、入力フォームのタイトルに曜日が入る。
 
+// 関数類
+function searchAllData(objIdKey) {
+  for (i = 0; i < allData.length; i++) {
+    if (allData[i].id == objIdKey) {
+      return allData[i]
+    }
+  }
+}
+
 // 追加するプランの曜日情報
 let allData = [];
 let allJson = '';
@@ -66,10 +75,10 @@ $('#save').on('click', function() {
           const data = {
             id: `${addPlan_dOfW}_${addPlan_time}`,
             dOfW: addPlan_dOfW,
-            title: $('#addPlan_title').val(),
-            time: $('#addPlan_time').val(),
+            title: addPlan_title,
+            time: addPlan_time,
             text: $('#mkPlan_textarea').val(),
-            child: childContent,
+            // child: childContent,//html型ごと入れるとデータ食うのでデータ読み込んで再編成する
           }
           console.log(data);
           // allData配列にプッシュ
@@ -100,10 +109,39 @@ if (localStorage.getItem('weeklyScheduleApp')) {
 
   //テキストエリアに取得した値を表示する。
   for (i = 0; i < allData.length; i++) {
-    // const childContent = `<section class="plan" id="${allData[i].id}"><div>${allData[i].time}:00</div><div>${allData[i].title}</div><button class="deleteBtn" value="${allData[i].id}" id="btn_${allData[i].id}">削除</button></section>`
-    $(`#${allData[i].dOfW}`).append(allData[i].child);
+    // $(`#${allData[i].dOfW}`).append(allData[i].child);
+
+    const childContent = `<section class="plan" id="${allData[i].id}"><div>${allData[i].time}:00</div><div>${allData[i].title}</div><button class="deleteBtn" value="${allData[i].id}" id="btn_${allData[i].id}">削除</button></section>`
+    console.log(childContent);
+    $(`#${allData[i].dOfW}`).append(childContent);
   }
 }
+
+
+
+// ===================テキスト表示（仮）===================
+let select = '';
+$('div').on('click', '.plan', function() {
+  console.log(`#${select.id}`)
+  if (select != '') {
+    $(`#${select.id}`).css('background-color','whitesmoke');
+  }
+  $(this).css('background-color','red');
+
+  const data = searchAllData($(this).attr('id'));
+  select = data;
+  if(data.text) {
+    $('#displayText').text(data.text)
+  }
+})
+
+
+
+
+// ===================ローカルストレージのデータ削除=====================
+$('#removeLs').on('click', function() {
+  localStorage.removeItem('weeklyScheduleApp');
+})
 
 
 
