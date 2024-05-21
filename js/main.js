@@ -216,7 +216,7 @@ $('div').on('click', '.plan', function() {
   // }
   console.log(`#${select.id}`)
   if (select != '') {
-    $(`#${select.id}`).css('background-color','whitesmoke');
+    $(`#${select.id}`).css('background-color','white');
   }
   $(this).css('background-color','#ffd700');
 
