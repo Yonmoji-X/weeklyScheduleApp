@@ -1,50 +1,152 @@
+body{
+  background-color:rgb(222, 222, 222);
+  /* background-color:black; */
+  /* background-color: #5d52a2; */
+}
+body h1 {
+  color: gold;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  background-color: rgb(127, 127, 127);
+  width: 400px;
+  text-align: center;
+  border-radius: 30px;
+  padding: 5px;
+  margin-left: 20px;
+}
+
 .contentsWrapper{
-  background-color: whitesmoke;
+  /* background-color:cadetblue; */
+  background-color:rgb(202, 202, 202);
+  /* background-color:yellow; */
+  /* background-color:rgb(255, 235, 197); */
+  padding: 15px 15px 15px 15px;
   display: flex;
+  margin: 0 5%;
+  border-radius: 30px;
 }
 
 .aside{
+  width: 100%;
   background-color: white;
-  margin: 2px 2px 2px 2px;
-  display: flex;
+  margin: 4px 4px 4px 4px;
+  padding: 10px 10px 10px 10px;
+  border-radius: 20px;
+  display:flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .container{
+  /* background: #000; */
   display: flex;
   margin: 2px 2px 2px 2px;
 }
 
 .article_dOfW{
-  background-color: aquamarine;
+  background-color: white;
+  /* background-color:rgb(29, 29, 29); */
   width:120px;
+  padding: 5px 5px 5px 5px;
   margin: 2px 2px 2px 2px;
+  border-radius: 20px;
+}
+
+.article_dOfW_Top{
+
+  border-bottom: 1px solid #666;
+  margin-bottom: 10px;
+  /* background-color: #0066CC; */
+  padding-bottom: 12px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 10px; */
+}
+
+.article_dOfW_Top h3{
+  margin: 0px 0px 5px 0px;
 }
 
 .plan{
-  background-color: whitesmoke;
-  margin: 2px 2px 2px 2px;
+  background-color: white;
+  margin: 2px 2px 6px 2px;
+  padding: 4px 4px 4px 4px;
+  border-radius: 8px;
+  /* border: solid 0.5px; */
+  box-shadow: 2px 2px 5px darkslategray;
 }
+
+.plan button{
+  background-color:white;
+  padding: 0px;
+  margin-left: 70%;
+  /* margin-right: 3px; */
+  width: 30px;
+  height: 18px;
+  font-size: 10px;
+  border-radius: 30px;
+  border: solid 0.5px white;
+  box-shadow: 1px 1px 1px darkslategray;
+}
+
+.plan button:hover{
+  background-color: #0066CC;
+  }
+
+/* ----------------aside側-------------- */
+#mkPlan_dOfW{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#mkPlan_time{
+  width: 100px;
+}
+
+/* #mkPlan_title{
+  background-color: whitesmoke;
+  margin: 2px 2px 6px 2px;
+  padding: 4px 4px 4px 4px;
+  border-radius: 8px;
+  border: solid 0.5px white;
+  box-shadow: 2px 2px 5px darkslategray;
+} */
 
 
 /* ボタン関係 */
 
-.aside ul{
+/* .aside {
+  width: 100%;
+  background-color: white;
+  border-radius: 8px;
+  padding: 10px 10px 10px 10px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+#saveParent{
   padding: 0;
-  border-top: 1px solid #000000;
-  display:table;  /* 定義 */
-  table-layout: fixed;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  /* table-layout: fixed; */
   width:100%;
 }
-.aside li{
+
+#save{
+  width: 100px;
   text-align: center;
   list-style-type:none;
   border: 1px solid #666;
+  border-radius: 30px;
   background-color: #FFF;
-  display:table-cell;  /* 定義 */
+  /* display:table-cell;   */
   cursor: pointer;
 }
-.aside li:hover{
+#save:hover{
   background: #0066CC;
   color:#fff;
 }
@@ -52,11 +154,72 @@
   margin: 3%;
   width: 95%;
   font-size:80%;
-  box-shadow: 3px 3px 3px 3px #555;
+  border:1px solid #666;
+  border-radius: 5px;
+  /* box-shadow: 3px 3px 3px 3px #555; */
 }
 .aside input{
   height: 30px;
 }
 .aside textarea{
   height: 230px;
+}
+
+.addBtn{
+  background-color: white;
+  width: 40px;
+  height: 20px;
+  font-size: 10px;
+  font-weight: bold;
+  border-radius: 30px;
+  border: solid 0.5px white;
+  box-shadow: 1px 1px 1px darkslategray;
+}
+.addBtn:hover{
+background-color: #0066CC;
+}
+
+
+
+/* ========footer========= */
+footer{
+  margin-bottom: 0px;
+  display: flex;
+  align-items: center;
+  /* flex-direction: column; */
+  justify-content: center;
+
+}
+
+.footerWrapper{
+  background-color: rgb(202, 202, 202);
+  width: 40%;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 30px;
+
+}
+
+#displayText {
+  width:90%;
+  margin: 10px;
+  height:100px;
+  text-align: center;
+  background-color: white;
+  border-radius: 10px;
+}
+
+#removeLs{
+  margin-bottom: 10px;
+  width: 150px;
+  text-align: center;
+  list-style-type:none;
+  border: 1px solid #666;
+  border-radius: 30px;
+  background-color: #FFF;
+  /* display:table-cell;   */
+  cursor: pointer;
 }

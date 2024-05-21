@@ -134,7 +134,6 @@ $('#save').on('click', function() {
   ・removeChild
   ・データ書き換え
   ・appendChild
-
   */
     if (searchAllData(`${addPlan_dOfW}_${addPlan_time}`)) {
       $(`#${addPlan_dOfW}_${addPlan_time}`).remove();
@@ -148,7 +147,6 @@ $('#save').on('click', function() {
       localStorage.setItem('weeklyScheduleApp',allJson);
       console.log(allJson);
     } else {
-      // $(`#${addPlan_dOfW}`).append(childContent);
       // データに入れる-------------------------------
             //タイトルとテキストエリアの文字列を保存
             const data = {
@@ -220,7 +218,7 @@ $('div').on('click', '.plan', function() {
   if (select != '') {
     $(`#${select.id}`).css('background-color','whitesmoke');
   }
-  $(this).css('background-color','#FFCB72');
+  $(this).css('background-color','#ffd700');
 
   if (searchAllData($(this).attr('id'))) {
     let data = searchAllData($(this).attr('id'));
@@ -254,9 +252,22 @@ $('#removeLs').on('click', function() {
     localStorage.setItem('weeklyScheduleApp',allJson);
     location.reload();
 	} else {
-		window.alert('キャンセルされました'); // 警告ダイアログを表示
+    window.alert('キャンセルされました'); // 警告ダイアログを表示
 	}
 })
+
+// ===================データの入出力=====================
+// セキュリテイー的に問題ありそうなので保留
+/*
+$('#loadData').on('click', function() {
+  allJson = $('#inputData').val();
+  localStorage.setItem('weeklyScheduleApp',allJson);
+  location.reload();
+});
+$('#outputData').val(allJson);
+*/
+
+
 
 
 

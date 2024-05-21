@@ -13,7 +13,7 @@
 
 <body>
   <header>
-    <h1>weeklyScheduleApp</h1>
+    <h1>Weekly Schedule</h1>
   </header>
 
   <main>
@@ -23,9 +23,9 @@
 
       <div class="container">
         <div class="article_dOfW" id="mon">
-          <h3>月</h3>
-          <section>
-              <button class="addBtn" id="addPlan_mon">＋</button>
+          <section class="article_dOfW_Top">
+            <h3>月</h3>
+            <button class="addBtn" id="addPlan_mon">＋</button>
           </section>
           <!-- <section class="plan" id="mon_9">
               <div>9:00</div>
@@ -35,9 +35,9 @@
         </div>
 
         <div class="article_dOfW" id="tue">
-          <h3>火</h3>
-          <section>
-              <button class="addBtn" id="addPlan_tue">＋</button>
+          <section class="article_dOfW_Top">
+            <h3>火</h3>
+            <button class="addBtn" id="addPlan_tue">＋</button>
           </section>
           <!-- <section class="plan" id="tue_9">
               <div>9:00</div>
@@ -47,9 +47,9 @@
         </div>
 
         <div class="article_dOfW" id="wed">
-          <h3>水</h3>
-          <section>
-              <button class="addBtn" id="addPlan_wed">＋</button>
+          <section class="article_dOfW_Top">
+            <h3>水</h3>
+            <button class="addBtn" id="addPlan_wed">＋</button>
           </section>
           <!-- <section class="plan" id="wed_9">
               <div>9:00</div>
@@ -58,9 +58,9 @@
         </div>
 
         <div class="article_dOfW" id="thu">
-          <h3>木</h3>
-          <section>
-              <button class="addBtn" id="addPlan_thu">＋</button>
+          <section class="article_dOfW_Top">
+            <h3>木</h3>
+            <button class="addBtn" id="addPlan_thu">＋</button>
           </section>
           <!-- <section class="plan" id="thu_9">
               <div>9:00</div>
@@ -69,9 +69,9 @@
         </div>
 
         <div class="article_dOfW" id="fri">
-          <h3>金</h3>
-          <section>
-              <button class="addBtn" id="addPlan_fri">＋</button>
+          <section class="article_dOfW_Top">
+            <h3>金</h3>
+            <button class="addBtn" id="addPlan_fri">＋</button>
           </section>
           <!-- <section class="plan" id="fri_9">
               <div>9:00</div>
@@ -80,9 +80,9 @@
         </div>
 
         <div class="article_dOfW" id="sat">
-          <h3>土</h3>
-          <section>
-              <button class="addBtn"  id="addPlan_sat">＋</button>
+          <section class="article_dOfW_Top">
+            <h3>土</h3>
+            <button class="addBtn"  id="addPlan_sat">＋</button>
           </section>
           <!-- <section class="plan" id="sat_9">
               <div>9:00</div>
@@ -91,9 +91,9 @@
         </div>
 
         <div class="article_dOfW" id="sun">
-          <h3>日</h3>
-          <section>
-              <button class="addBtn" id="addPlan_sun">＋</button>
+          <section class="article_dOfW_Top">
+            <h3>日</h3>
+            <button class="addBtn" id="addPlan_sun">＋</button>
           </section>
           <!-- <section class="plan" id="sun_9">
               <div>9:00</div>
@@ -134,10 +134,12 @@
 
         <input type="text" id="mkPlan_title">
         <textarea id="mkPlan_textarea"></textarea>
-        <ul>
+        <div id="saveParent">
+          <button id="save">保 存</button>
+        </div>
+        <!-- <ul>
           <li id="save">保存</li>
-          <li id="clear">キャンセル</li>
-        </ul>
+        </ul> -->
       </div>
       <!-- ====================================== -->
 
@@ -153,10 +155,20 @@
   </main>
 
   <footer>
-    <div id="displayText">
-    </div>
-    <button id="removeLs">データ削除</button>
-    <small>G's</small>
+
+<div class="footerWrapper">
+  <div id="displayText"></div>
+  <button id="removeLs">今週のデータ削除</button>
+</div>
+    <!-- セキュリティ的に問題ありそうなので保留 -->
+    <!-- <div>
+      <input type="text" id="inputData">
+      <button id="loadData">データ入力</button>
+      <textarea id="outputData"></textarea>
+    </div> -->
+
+
+
   </footer>
 
   <script src="./js/main.js"></script>
