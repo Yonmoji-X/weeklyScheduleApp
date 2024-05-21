@@ -55,7 +55,7 @@ $('#addPlan_mon').on('click', function() {
   const dOfW = '月';
   addPlan_dOfW = 'mon';
   $('#mkPlan_dOfW').text(dOfW);
-  $("#mkPlan_time").val('');
+  $("#mkPlan_time").val(9);
   $('#mkPlan_title').val('');
   $('#mkPlan_textarea').val('');
 });
@@ -63,7 +63,7 @@ $('#addPlan_tue').on('click', function() {
   const dOfW = '火';
   addPlan_dOfW = 'tue';
   $('#mkPlan_dOfW').text(dOfW);
-  $("#mkPlan_time").val('');
+  $("#mkPlan_time").val('9');
   $('#mkPlan_title').val('');
   $('#mkPlan_textarea').val('');
 });
@@ -71,7 +71,7 @@ $('#addPlan_wed').on('click', function() {
   const dOfW = '水';
   addPlan_dOfW = 'wed';
   $('#mkPlan_dOfW').text(dOfW);
-  $("#mkPlan_time").val('');
+  $("#mkPlan_time").val('9');
   $('#mkPlan_title').val('');
   $('#mkPlan_textarea').val('');
 });
@@ -79,7 +79,7 @@ $('#addPlan_thu').on('click', function() {
   const dOfW = '木';
   addPlan_dOfW = 'thu';
   $('#mkPlan_dOfW').text(dOfW);
-  $("#mkPlan_time").val('');
+  $("#mkPlan_time").val('9');
   $('#mkPlan_title').val('');
   $('#mkPlan_textarea').val('');
 });
@@ -87,7 +87,7 @@ $('#addPlan_fri').on('click', function() {
   const dOfW = '金';
   addPlan_dOfW = 'fri';
   $('#mkPlan_dOfW').text(dOfW);
-  $("#mkPlan_time").val('');
+  $("#mkPlan_time").val('9');
   $('#mkPlan_title').val('');
   $('#mkPlan_textarea').val('');
 });
@@ -95,7 +95,7 @@ $('#addPlan_sat').on('click', function() {
   const dOfW = '土';
   addPlan_dOfW = 'sat';
   $('#mkPlan_dOfW').text(dOfW);
-  $("#mkPlan_time").val('');
+  $("#mkPlan_time").val('9');
   $('#mkPlan_title').val('');
   $('#mkPlan_textarea').val('');
 });
@@ -103,7 +103,7 @@ $('#addPlan_sun').on('click', function() {
   const dOfW = '日';
   addPlan_dOfW = 'sun';
   $('#mkPlan_dOfW').text(dOfW);
-  $("#mkPlan_time").val('');
+  $("#mkPlan_time").val('9');
   $('#mkPlan_title').val('');
   $('#mkPlan_textarea').val('');
 });

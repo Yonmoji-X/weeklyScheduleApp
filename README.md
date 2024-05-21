@@ -11,6 +11,7 @@ weeklyScheduleApp
 
 ## ③DEMO
 デプロイしている場合はURLを記入（任意）
+https://yonmoji-x.github.io/weeklyScheduleApp/
 
 ## ④作ったアプリケーション用のIDまたはPasswordがある場合
 ID: 無
