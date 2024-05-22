@@ -41,6 +41,51 @@ function dOfW2kanji(dOfW) {
   }
 }
 
+// =======================日付の取得=======================
+/**
+ *
+ * @returns {Array} 1~7 月~日 thisWeek()[0]の呼ぶ
+ * 念のため配列度取り出せるようにしている。
+ *
+ */
+
+function thisWeek(){
+  let today = new Date(); //Dateをインスタンス化
+  let startMon = new Date();
+  let date = today.getDate(); //今日の日にちを取得
+  let dayNum = today.getDay(); //今日の曜日を取得（1～7までの数字でとれる）
+  let dayDate =[];
+  for (i = 0; i <= 7; i++) {
+  startMon.setDate(date - dayNum + i);
+  dayDate[i] = startMon;
+  startMon = new Date();
+  }
+  return dayDate;
+}
+// ========================================================
+console.log(thisWeek());
+console.log(thisWeek()[0]);
+console.log(`${thisWeek()[0].getMonth()+1}/${thisWeek()[0].getDate()}`);
+let day2Date = {
+  mon_d:`${thisWeek()[1].getMonth()+1}/${thisWeek()[1].getDate()}`,
+  tue_d:`${thisWeek()[2].getMonth()+1}/${thisWeek()[2].getDate()}`,
+  wed_d:`${thisWeek()[3].getMonth()+1}/${thisWeek()[3].getDate()}`,
+  thu_d:`${thisWeek()[4].getMonth()+1}/${thisWeek()[4].getDate()}`,
+  fri_d:`${thisWeek()[5].getMonth()+1}/${thisWeek()[5].getDate()}`,
+  sat_d:`${thisWeek()[6].getMonth()+1}/${thisWeek()[6].getDate()}`,
+  sun_d:`${thisWeek()[7].getMonth()+1}/${thisWeek()[7].getDate()}`,
+}
+
+console.log(day2Date.mon_d);
+$('#mon .dayBox').prepend(`<P>${day2Date.mon_d}</P>`);
+$('#tue .dayBox').prepend(`<P>${day2Date.tue_d}</P>`);
+$('#wed .dayBox').prepend(`<P>${day2Date.wed_d}</P>`);
+$('#thu .dayBox').prepend(`<P>${day2Date.thu_d}</P>`);
+$('#fri .dayBox').prepend(`<P>${day2Date.fri_d}</P>`);
+$('#sat .dayBox').prepend(`<P>${day2Date.sat_d}</P>`).css('color', 'blue');;
+$('#sun .dayBox').prepend(`<P>${day2Date.sun_d}</P>`).css('color', 'Red');;
+
+
 // 追加するプランの曜日情報
 let allData = [];
 let allJson = '';
